@@ -63,3 +63,24 @@ pander::panderOptions("table.continues", "")
 You can also use the `docs` directory to print out documentation for your project, there is an option on rmarkdown for that: github_document. When pushing the project to GitHub you can use this directory as the root for a
 GitHub Pages website for the project. For more information see
 https://github.com/blog/2289-publishing-with-github-pages-now-as-easy-as-1-2-3
+
+
+Now to use this template, clone it into a directory in your system with:
+
+```
+git clone https://github.com/lf-araujo/cidacs
+```
+
+And set your template directory with:
+
+```
+options(ProjectTemplate.templatedir = "/path/to/your/templates/where/cidacs/is")
+```
+
+Finally, go to the desired directory where your new project will live and:
+
+```
+ProjectTemplate::create.project(project.name = "my cool project", template = "cidacs")
+```
+
+
