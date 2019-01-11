@@ -1,0 +1,35 @@
+---
+title: "The title"
+date: "`r format(Sys.time(), '%d %B, %Y' )`"
+lang: en
+author: author name
+output:
+    word_document:
+      toc: true
+      #pandoc_args: ["-F", "pandoc-crossref"]
+
+
+# Option for RStudio users, this makes the Knit button save the file in the `reports` folder
+knit: (function(inputFile, encoding) {
+  rmarkdown::render(inputFile, encoding = encoding, output_file = paste(Sys.Date(), "-report", ".doc", sep=""), output_dir = "../reports") }) 
+
+# Bibliography
+# bibliography: "Y:/Projects/Name/doc/library.bib"
+---
+
+
+```{r setup, include=FALSE}
+set.seed(42)
+library(here);setwd(here()) # needed as we are in /src, in linux here() should be used
+
+# Loading the project
+library(ProjectTemplate);load.project()
+
+
+# R options
+options(digits = 2)
+
+# Knitr options
+knitr::opts_chunk$set(comment = NA, cache.path = "../cache/", fig.path="../graphs/", echo=F)
+pander::panderOptions("table.continues", "")
+```
