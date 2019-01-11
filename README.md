@@ -1,4 +1,4 @@
-# This repo includes files from project:
+# This repo includes files from project {Project Name}:
 
 
 In order to properly collaborate with this team, this repository was created. It consists of a series of folders where research files are organized, as well as the products of the research. The basic file structure, as you can see in the folder structure, include the following folders:
