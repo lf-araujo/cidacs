@@ -1,4 +1,4 @@
-version: 0.8
+version: 0.9.0
 data_loading: TRUE
 data_loading_header: TRUE
 data_ignore:
@@ -8,9 +8,9 @@ munging: TRUE
 logging: FALSE
 logging_level: INFO
 load_libraries: FALSE
-libraries: pander, ProjectTemplate
+libraries: reshape2, plyr, tidyverse, stringr, lubridate
 as_factors: TRUE
-data_tables: TRUE
+tables_type: tibble
 attach_internal_libraries: FALSE
 cache_loaded_data:  FALSE
 sticky_variables: NONE

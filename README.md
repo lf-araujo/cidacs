@@ -21,6 +21,8 @@ title: "The title"
 date: "`r format(Sys.time(), '%d %B, %Y' )`"
 lang: en
 author: author name
+abstract:
+number-sections: true
 output:
     word_document:
       toc: true
@@ -43,21 +45,31 @@ Following the header you should also set your Rmarkdown environment with a few o
 
 ```{r setup, include=FALSE}
 set.seed(42)
-setwd("../") # needed as we are in /src, in linux here() should be used
+setwd(here::here()) # needed as we are in /src, in linux here() should be used
 
 # Loading the project
-library(ProjectTemplate);load.project()
-
+ProjectTemplate::load.project()
 
 # R options
-options(digits = 2)
+options(digits = 2, scipen=999,ggplot2.continuous.colour="viridis", ggplot2.continuous.fill = "viridis") # Remove scientific notation
 
 # Knitr options
-knitr::opts_chunk$set(comment = NA, cache.path = "../cache/", fig.path="../graphs/", echo=F)
-pander::panderOptions("table.continues", "")
+knitr::opts_chunk$set(comment = NA, cache.path = "../cache/", fig.path="../graphs/", echo=F, cache=F, fig.width = 10, fig.height = 7, dpi = 300)
 ```
 
+```{r setup-table-figures-num}
+# This special function allows anchors to tables and figures
+table_figure_num()
+```
+
+
+
 ````
+
+
+
+
+
 
 
 You can also use the `docs` directory to print out documentation for your project, there is an option on rmarkdown for that: github_document. When pushing the project to GitHub you can use this directory as the root for a
