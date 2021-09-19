@@ -1,0 +1,100 @@
+---
+title: Work Schedule 
+subtitle: Project subtitle
+author:
+- Me^[Post Doc | Center of Data and Knowledge Integration for Health (CIDACS) | Salvador | Brasil] 
+date: \today
+mainfont: Trebuchet MS
+titlefont: Trebuchet MS
+institute: Center of Data and Knowledge Integration for Health (CIDACS)
+titlegraphic: "./style/title.png"
+csl: style/chicago-fullnote-bibliography.csl
+suppress-bibliography: true
+#bibliography: mylibrary.bib
+lang: en-AU
+output: 
+  beamer_presentation:
+    template: style/template.tex 
+    latex_engine: xelatex
+classoption: "aspectratio=169"
+---
+
+
+```{r setup, include=FALSE}
+dep <- function(x) {
+  if (!all(x %in% installed.packages())) {
+    install.packages(x[x %in% installed.packages()[, "Package"] == F])
+  }
+  lapply(x, require, character.only = T)
+}
+knitr::opts_chunk$set(echo = FALSE)
+setwd(here::here())
+```
+
+
+## First slide 
+
+- Occurs in all ages
+	+ More common in the elderly
+- Example of citation [@machadoEffectsCOVID19Anxiety2020].
+
+
+# Sections are not supported
+
+## Data set - CIDACS
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
+### A block
++ Column example
+
+:::
+::: {.column width="50%"}
+
+\tiny
+
+Dataset coverage from 2001 to 2017
+
+:::
+::::::::::::::
+
+
+## Work schedule
+
+```{r, eval = F, echo = F}
+a <- "
+gantt
+	dateFormat  DD-MM-YYYY
+
+	section MRC 2019 seed funding
+		1st draft: done, 10-08-2019, 10-09-2019
+		Final : done, 4w
+		Awaiting results : done, 20w
+		Ethics forms: crit, active, 10-03-2020, 23-06-2020
+		FIOTEC: crit, fit, 10-03-2020, 08-09-2020
+		MRC signature: active, crit, mrc1, after fit,  2w
+		Curadoria: active, crit, after mrc1, 2w
+
+
+	section Ebook chapter 'Multiborbidity, Psychiatry, and Covid-19'
+		Final version : active, 08-09-2020, 2w
+
+	section Systematic review  'Multiborbidity, Psychiatry, and Covid-19'
+		1st draft : active, 20-09-2020, 4w
+
+	section (Tentative) Meta-analysis  'Multiborbidity and Schizophrenia'
+		1st draft : active, 20-10-2020, 16w	
+
+	section (Objective A & B) Inferential analyses of chronic conditions after psy hosp
+		1st draft : active, 22-03-2021, 5w
+
+	section (Objective C) Cluster analysis chronic conditions and mental disorders
+		1st draft : active, 01-01-2022, 5w
+
+
+"
+DiagrammeR::mermaid(a)
+```
+
+

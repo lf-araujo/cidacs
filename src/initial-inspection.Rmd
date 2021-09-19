@@ -6,15 +6,13 @@ author: author name
 abstract:
 number-sections: true
 output:
-    word_document:
-      toc: true
-      #pandoc_args: ["-F", "pandoc-crossref"]
-
-
-# Option for RStudio users, this makes the Knit button save the file in the `reports` folder
-knit: (function(inputFile, encoding) {
-  rmarkdown::render(inputFile, encoding = encoding, output_file = paste(Sys.Date(), "-report", ".doc", sep=""), output_dir = "../reports") }) 
-
+  html_notebook:
+    theme: readable
+    toc: yes
+    toc_float: yes
+    df_print: paged
+    code_folding: hide
+    code_downloading: yes
 # Bibliography
 # bibliography: "Y:/Projects/Name/doc/library.bib"
 ---
@@ -25,17 +23,25 @@ setwd(here::here()) # needed as we are in /src, in linux here() should be used
 
 # Loading the project
 ProjectTemplate::load.project()
+pclean()
 
 # R options
-options(digits = 2, scipen=999,ggplot2.continuous.colour="viridis", ggplot2.continuous.fill = "viridis") # Remove scientific notation
+options(
+  digits = 2, # Only two decimal digits
+  scipen = 999 # Remove scientific notation for pretty printing
+)
 
 # Knitr options
-knitr::opts_chunk$set(comment = NA, cache.path = "../cache/", fig.path="../graphs/", echo=F, cache=F, fig.width = 10, fig.height = 7, dpi = 300)
-```
-
-```{r setup-table-figures-num}
-# This special function allows anchors to tables and figures
-table_figure_num()
+knitr::opts_chunk$set(
+  comment = NA, # remove comment symbol
+  cache.path = "../cache/", # where should I save cache?
+  fig.path = "../graphs/", # where should I save figures?
+  echo = F, # dont echo by default
+  cache = F, # dont cache by default
+  fig.width = 10, # setting the best witdth for figures
+  fig.height = 7, # best height
+  dpi = 300 # high dpi for publication quality
+)
 ```
 
 
