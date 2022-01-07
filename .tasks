@@ -1,0 +1,9 @@
+[render]
+command = Rscript -e "rmarkdown::render('$(VIM_FILENAME)')"
+; cwd=<root>
+
+[file-run]
+command="$(VIM_FILEDIR)/$(VIM_FILENOEXT)"
+cwd=$(VIM_FILEDIR)
+# output mode: run in a terminal
+output=terminal

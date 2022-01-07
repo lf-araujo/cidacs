@@ -12,7 +12,7 @@ libraries: dtplyr
 as_factors: FALSE
 tables_type: data.table
 attach_internal_libraries: FALSE
-cache_loaded_data:  TRUE
+cache_loaded_data: TRUE
 sticky_variables: NONE
 underscore_variables: TRUE
 cache_file_format: RData

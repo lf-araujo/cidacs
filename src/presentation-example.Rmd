@@ -4,31 +4,52 @@ subtitle: Project subtitle
 author:
 - Me^[Post Doc | Center of Data and Knowledge Integration for Health (CIDACS) | Salvador | Brasil] 
 date: \today
-mainfont: Trebuchet MS
-titlefont: Trebuchet MS
 institute: Center of Data and Knowledge Integration for Health (CIDACS)
 titlegraphic: "./style/title.png"
 csl: style/chicago-fullnote-bibliography.csl
 suppress-bibliography: true
-#bibliography: mylibrary.bib
+bibliography: /home/luis/Documents/library.bib
 lang: en-AU
 output: 
   beamer_presentation:
     template: style/template.tex 
-    latex_engine: xelatex
 classoption: "aspectratio=169"
+header-includes: |
+ \usepackage{navigator}
+ \embeddedfile{project}{presentation-example.Rmd}
+  \usepackage{roboto}
 ---
 
 
 ```{r setup, include=FALSE}
-dep <- function(x) {
-  if (!all(x %in% installed.packages())) {
-    install.packages(x[x %in% installed.packages()[, "Package"] == F])
-  }
-  lapply(x, require, character.only = T)
-}
-knitr::opts_chunk$set(echo = FALSE)
+
+library(qrencoder)
+
 setwd(here::here())
+ProjectTemplate::load.project() # Loading the project
+pclean() # clean /src
+
+
+# R options
+options(
+  digits = 2, # Only two decimal digits
+  scipen = 999 # Remove scientific notation
+)
+
+
+# Knitr options
+knitr::opts_chunk$set(
+  comment = NA, # remove comment symbol
+  cache.path = "../cache/", # where should I save cache?
+  fig.path = "../graphs/", # where should I save figures?
+  echo = F, # dont echo by default
+  cache = F, # dont cache by default
+  fig.width = 10, # setting the best witdth for figures
+  fig.height = 7, # best height
+  dpi = 300, # high dpi for publication quality,
+  warning = F,
+  error = FALSE # do not interrupt in case of errors
+)
 ```
 
 
@@ -84,7 +105,7 @@ gantt
 		1st draft : active, 20-09-2020, 4w
 
 	section (Tentative) Meta-analysis  'Multiborbidity and Schizophrenia'
-		1st draft : active, 20-10-2020, 16w	
+		1st draft : active, 20-10-2020, 16w
 
 	section (Objective A & B) Inferential analyses of chronic conditions after psy hosp
 		1st draft : active, 22-03-2021, 5w
@@ -97,4 +118,31 @@ gantt
 DiagrammeR::mermaid(a)
 ```
 
+# Acknowledgements
 
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+## Team
+
+- Prof X 
+- Prof Y 
+
+-  grant no 123
+
+:::
+::: {.column width="50%"}
+
+
+## Contact 
+
+```{r qr-twitter, out.width='80%', fig.align='center'}
+image(qrencode_raster("https://twitter.com/lf-araujo"),
+  asp = 1, col = c("white", "black"), axes = FALSE,
+  xlab = "", ylab = ""
+)
+```
+<!-- ../graphs/qr-twitter-1.pdf -->
+
+:::
+::::::::::::::
